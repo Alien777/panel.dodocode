@@ -1,0 +1,4 @@
+Flask~=2.0.0
+Werkzeug~=2.0.0
+python-magic~=0.4.24
+MarkupSafe~=2.0.0

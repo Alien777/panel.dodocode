@@ -1,0 +1,10 @@
+{% extends 'admin/model/list.html' %} <!-- Declare inheritance Flask-Admin's model editing template -->
+
+{% block tail %} <!-- Append content to the tail block of the parent template -->
+<script>
+    function CopyToClipboard(id) {
+        navigator.clipboard.writeText(document.getElementById(id).src)
+    }
+</script>
+{{ super() }}
+{% endblock %}
