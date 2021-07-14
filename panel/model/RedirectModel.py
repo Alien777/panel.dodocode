@@ -13,5 +13,8 @@ class RedirectModel(Db.Model):
     path = Db.Column(Db.String(300))
     changed = Db.Column(Db.DateTime, default=datetime.now)
 
+    def findPageIdBy(path):
+        return Db.session.query(RedirectModel.page_id).filter(RedirectModel.path == path).scalar()
+
     def __repr__(self):
         return '%r' % (self.path)

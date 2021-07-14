@@ -12,5 +12,8 @@ class PageModel(Db.Model):
     created = Db.Column(Db.TIMESTAMP)
     updated = Db.Column(Db.TIMESTAMP)
 
+    def getPageBy(id):
+        return Db.session.query(PageModel).get(id)
+
     def __repr__(self):
         return '%r' % (self.title)

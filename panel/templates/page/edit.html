@@ -1,12 +1,12 @@
 {% extends 'admin/model/edit.html' %} <!-- Declare inheritance Flask-Admin's model editing template -->
 
- {% block tail %} <!-- Append content to the tail block of the parent template -->
+{% block tail %} <!-- Append content to the tail block of the parent template -->
 <script>
     function CopyToClipboard(id) {
         navigator.clipboard.writeText(document.getElementById(id).src)
     }
 </script>
-    {{ super() }}
-         {{ ckeditor.load() }} <!-- Load CKEditor's JavaScript file, which is obtained by default from CDN -->
-
+{{ super() }}
+{{ ckeditor.load() }}
+{{ ckeditor.config(name='body',lanuage='pl') }}
 {% endblock %}

@@ -23,14 +23,20 @@ class DashboardView(AdminIndexView):
 
 
 def create_app():
-    global admin
+    global panelAdminInstance
+    global ckeditor
+    global databaseInstance
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:postgres@localhost:5432/dodocode"
     app.config['SECRET_KEY'] = '9OLWxND4o83j4K4iuopO'
-
+    app.config['CKEDITOR_ENABLE_CODESNIPPET'] = True
+    app.config['CKEDITOR_SERVE_LOCAL'] = False
+    app.config['CKEDITOR_PKG_TYPE'] = 'full-all'
+    app.config['CKEDITOR_CODE_THEME'] = 'docco'
     databaseInstance.init_app(app)
-    panelAdminInstance.init_app(app, index_view=DashboardView())
     ckeditor.init_app(app)
+
+    panelAdminInstance.init_app(app, index_view=DashboardView())
 
     login_manager = LoginManager()
     login_manager.login_view = 'auth.login'
